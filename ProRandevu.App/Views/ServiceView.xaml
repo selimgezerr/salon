@@ -1,0 +1,41 @@
+<UserControl x:Class="ProRandevu.App.Views.ServiceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="10">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,5">
+            <Button Content="Yeni Hizmet" Command="{Binding NewCommand}" Margin="0,0,5,0" />
+            <Label Content="Kategori:" VerticalAlignment="Center" />
+            <TextBox Width="100" Text="{Binding FilterCategory, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid ItemsSource="{Binding Services}"
+                      SelectedItem="{Binding SelectedService, Mode=TwoWay}"
+                      AutoGenerateColumns="False" Grid.Column="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ad" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Süre" Binding="{Binding DurationMinutes}" />
+                    <DataGridTextColumn Header="Fiyat" Binding="{Binding Price}" />
+                    <DataGridTextColumn Header="Kategori" Binding="{Binding Category}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <Label Content="Ad" />
+                <TextBox Text="{Binding SelectedService.Name, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Content="Süre (dk)" />
+                <TextBox Text="{Binding SelectedService.DurationMinutes, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Content="Fiyat" />
+                <TextBox Text="{Binding SelectedService.Price, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Content="Kategori" />
+                <TextBox Text="{Binding SelectedService.Category, UpdateSourceTrigger=PropertyChanged}" />
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <Button Content="Kaydet" Command="{Binding SaveCommand}" Margin="0,0,5,0" />
+                    <Button Content="Sil" Command="{Binding DeleteCommand}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</UserControl>

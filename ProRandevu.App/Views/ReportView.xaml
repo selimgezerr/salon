@@ -1,0 +1,59 @@
+<UserControl x:Class="ProRandevu.App.Views.ReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="10">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,5">
+            <Label Content="Başlangıç:" VerticalAlignment="Center" />
+            <DatePicker SelectedDate="{Binding StartDate}" Margin="5,0" />
+            <Label Content="Bitiş:" VerticalAlignment="Center" />
+            <DatePicker SelectedDate="{Binding EndDate}" Margin="5,0" />
+            <Button Content="Yenile" Command="{Binding RefreshCommand}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,5">
+            <Border Padding="5" Margin="0,0,5,0" Background="#FFEFEFEF">
+                <StackPanel>
+                    <TextBlock Text="Toplam Gelir" FontWeight="Bold" />
+                    <TextBlock Text="{Binding TotalRevenue}" />
+                </StackPanel>
+            </Border>
+            <Border Padding="5" Margin="0,0,5,0" Background="#FFEFEFEF">
+                <StackPanel>
+                    <TextBlock Text="Borç Bakiyesi" FontWeight="Bold" />
+                    <TextBlock Text="{Binding TotalDebt}" />
+                </StackPanel>
+            </Border>
+            <Border Padding="5" Background="#FFEFEFEF">
+                <StackPanel>
+                    <TextBlock Text="Müşteri Sayısı" FontWeight="Bold" />
+                    <TextBlock Text="{Binding TotalCustomers}" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" ItemsSource="{Binding ServiceStats}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Hizmet" Binding="{Binding Key}" />
+                    <DataGridTextColumn Header="Adet" Binding="{Binding Value}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.Row="1" ItemsSource="{Binding RevenueStats}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ay" Binding="{Binding Key}" />
+                    <DataGridTextColumn Header="Toplam" Binding="{Binding Value}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Grid.Row="2" ItemsSource="{Binding CustomerStats}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ay" Binding="{Binding Key}" />
+                    <DataGridTextColumn Header="Yeni" Binding="{Binding Value}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!-- TODO: Replace DataGrids with LiveCharts when library is available -->
+    </DockPanel>
+</UserControl>

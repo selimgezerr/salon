@@ -1,1 +1,30 @@
-
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProRandevu.App", "ProRandevu.App\ProRandevu.App.csproj", "{67789932-E624-417C-8D57-F0AADBF4CBF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProRandevu.Data", "ProRandevu.Data\ProRandevu.Data.csproj", "{25F6E080-8643-4D44-A276-A9E8ECB3B145}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProRandevu.Seeder", "ProRandevu.Seeder\ProRandevu.Seeder.csproj", "{2638D2A1-3BDD-4097-8441-044066D04338}"
+EndProject
+Global
+GlobalSection(SolutionConfigurationPlatforms) = preSolution
+Debug|Any CPU = Debug|Any CPU
+Release|Any CPU = Release|Any CPU
+EndGlobalSection
+GlobalSection(ProjectConfigurationPlatforms) = postSolution
+{67789932-E624-417C-8D57-F0AADBF4CBF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+{67789932-E624-417C-8D57-F0AADBF4CBF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+{67789932-E624-417C-8D57-F0AADBF4CBF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+{67789932-E624-417C-8D57-F0AADBF4CBF2}.Release|Any CPU.Build.0 = Release|Any CPU
+{25F6E080-8643-4D44-A276-A9E8ECB3B145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+{25F6E080-8643-4D44-A276-A9E8ECB3B145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+{25F6E080-8643-4D44-A276-A9E8ECB3B145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+{25F6E080-8643-4D44-A276-A9E8ECB3B145}.Release|Any CPU.Build.0 = Release|Any CPU
+{2638D2A1-3BDD-4097-8441-044066D04338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+{2638D2A1-3BDD-4097-8441-044066D04338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+{2638D2A1-3BDD-4097-8441-044066D04338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+{2638D2A1-3BDD-4097-8441-044066D04338}.Release|Any CPU.Build.0 = Release|Any CPU
+EndGlobalSection
+EndGlobal
