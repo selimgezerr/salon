@@ -1,0 +1,27 @@
+<Window x:Class="ProRandevu.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ProRandevu.App.ViewModels"
+        Title="ProRandevu" Height="450" Width="800"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource ForegroundBrush}">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Background="#FFEEEEEE">
+            <Button Content="Müşteriler" Command="{Binding ShowCustomersCommand}" Margin="5" />
+            <Button Content="Randevular" Command="{Binding ShowAppointmentsCommand}" Margin="5" />
+            <Button Content="Hizmetler" Command="{Binding ShowServicesCommand}" Margin="5" />
+            <Button Content="Personeller" Command="{Binding ShowStaffCommand}" Margin="5" />
+            <Button Content="Ödemeler" Command="{Binding ShowPaymentsCommand}" Margin="5" />
+            <Button Content="Raporlar" Command="{Binding ShowReportsCommand}" Margin="5" />
+            <Button Content="Ayarlar" Command="{Binding ShowSettingsCommand}" Margin="5" />
+        </StackPanel>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView}" />
+    </Grid>
+</Window>

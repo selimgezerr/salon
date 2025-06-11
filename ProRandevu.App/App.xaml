@@ -1,0 +1,35 @@
+<Application x:Class="ProRandevu.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:ProRandevu.App.ViewModels"
+             xmlns:views="clr-namespace:ProRandevu.App.Views"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="Themes/LightTheme.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+        <DataTemplate DataType="{x:Type vm:CustomerViewModel}">
+            <views:CustomerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AppointmentViewModel}">
+            <views:AppointmentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ServiceViewModel}">
+            <views:ServiceView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:StaffViewModel}">
+            <views:StaffView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PaymentViewModel}">
+            <views:PaymentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ReportViewModel}">
+            <views:ReportView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <views:SettingsView/>
+        </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

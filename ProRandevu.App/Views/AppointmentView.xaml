@@ -1,0 +1,41 @@
+<UserControl x:Class="ProRandevu.App.Views.AppointmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="10">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,5">
+            <Button Content="Yeni Randevu" Command="{Binding NewCommand}" Margin="0,0,5,0" />
+            <Label Content="Başlangıç:" VerticalAlignment="Center" />
+            <DatePicker SelectedDate="{Binding FilterStart, UpdateSourceTrigger=PropertyChanged}" Margin="5,0" />
+            <Label Content="Bitiş:" VerticalAlignment="Center" />
+            <DatePicker SelectedDate="{Binding FilterEnd, UpdateSourceTrigger=PropertyChanged}" Margin="5,0" />
+            <ComboBox ItemsSource="{Binding ViewModes}" SelectedItem="{Binding SelectedViewMode}" Margin="10,0" Width="100" />
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding Appointments}"
+                  SelectedItem="{Binding SelectedAppointment, Mode=TwoWay}"
+                  AutoGenerateColumns="False">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="Pending">
+                            <Setter Property="Background" Value="Yellow" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="Arrived">
+                            <Setter Property="Background" Value="LightGreen" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="Cancelled">
+                            <Setter Property="Background" Value="Tomato" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Müşteri" Binding="{Binding Customer.FirstName}" />
+                <DataGridTextColumn Header="Hizmet" Binding="{Binding Service.Name}" />
+                <DataGridTextColumn Header="Personel" Binding="{Binding Staff.Name}" />
+                <DataGridTextColumn Header="Başlangıç" Binding="{Binding StartTime, StringFormat=t}" />
+                <DataGridTextColumn Header="Bitiş" Binding="{Binding EndTime, StringFormat=t}" />
+                <DataGridTextColumn Header="Durum" Binding="{Binding Status}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

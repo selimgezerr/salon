@@ -1,0 +1,56 @@
+<UserControl x:Class="ProRandevu.App.Views.PaymentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <DockPanel Margin="10">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,5">
+            <Button Content="Yeni Ödeme" Command="{Binding NewCommand}" Margin="0,0,5,0" />
+            <Label Content="Müşteri:" VerticalAlignment="Center" />
+            <TextBox Width="100" Text="{Binding FilterCustomer, UpdateSourceTrigger=PropertyChanged}" Margin="5,0" />
+            <Label Content="Tip:" VerticalAlignment="Center" />
+            <ComboBox Width="80" SelectedItem="{Binding FilterType}" Margin="5,0">
+                <ComboBox.ItemsSource>
+                    <x:Array Type="{x:Type sys:String}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <sys:String>Cash</sys:String>
+                        <sys:String>Card</sys:String>
+                        <sys:String>Debt</sys:String>
+                    </x:Array>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+            <Label Content="Başlangıç:" VerticalAlignment="Center" />
+            <DatePicker SelectedDate="{Binding FilterStart, UpdateSourceTrigger=PropertyChanged}" Margin="5,0" />
+            <Label Content="Bitiş:" VerticalAlignment="Center" />
+            <DatePicker SelectedDate="{Binding FilterEnd, UpdateSourceTrigger=PropertyChanged}" Margin="5,0" />
+            <Label Content="Min Tutar:" VerticalAlignment="Center" />
+            <TextBox Width="60" Text="{Binding MinAmount, UpdateSourceTrigger=PropertyChanged}" Margin="5,0" />
+        </StackPanel>
+        <TabControl>
+            <TabItem Header="Tüm Ödemeler">
+                <DataGrid ItemsSource="{Binding Payments}" SelectedItem="{Binding SelectedPayment, Mode=TwoWay}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Müşteri" Binding="{Binding Customer.FirstName}" />
+                        <DataGridTextColumn Header="Tarih" Binding="{Binding Date, StringFormat=d}" />
+                        <DataGridTextColumn Header="Tutar" Binding="{Binding Amount}" />
+                        <DataGridTextColumn Header="Tip" Binding="{Binding Type}" />
+                        <DataGridTextColumn Header="Not" Binding="{Binding Note}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Borçlar">
+                <DataGrid ItemsSource="{Binding DebtPayments}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Müşteri" Binding="{Binding Customer.FirstName}" />
+                        <DataGridTextColumn Header="Tarih" Binding="{Binding Date, StringFormat=d}" />
+                        <DataGridTextColumn Header="Tutar" Binding="{Binding Amount}" />
+                        <DataGridTextColumn Header="Not" Binding="{Binding Note}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <!-- TODO: Chart for payment totals by type -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,5,0,0">
+            <Button Content="Kaydet" Command="{Binding SaveCommand}" Margin="0,0,5,0" />
+            <Button Content="Sil" Command="{Binding DeleteCommand}" />
+        </StackPanel>
+    </DockPanel>
+</UserControl>
